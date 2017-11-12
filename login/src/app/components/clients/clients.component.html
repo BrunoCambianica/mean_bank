@@ -1,0 +1,32 @@
+<div class="container">
+  <hr>
+  <h1>Liste des clients</h1>
+  <hr>
+</div>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <table class="table table-condensed table-striped table-hover table-perso ">
+      <thead>
+        <tr>
+          <th>Nom </th>
+          <th>Prenom</th>
+          <th>Solde</th>
+          <th>La fin</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let client of clients">
+
+            <td [textContent]="client.nom | uppercase" routerLink="/virementsclient/{{ client._id }}" routerLinkActive="active"></td>
+            <td [textContent]="client.prenom" routerLink="/virementsclient/{{ client._id }}" routerLinkActive="active"></td>
+            <td [textContent]="client.solde + ' €'" routerLink="/virementsclient/{{ client._id }}" routerLinkActive="active"></td>
+            <td>
+              <input type="button" (click)="deleteClient(client._id)" value="Spprimer" class="btn btn-danger">
+            </td>  
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

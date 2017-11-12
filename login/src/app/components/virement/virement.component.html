@@ -1,0 +1,37 @@
+<div class="container">
+    <h1>Effectuer un virement :</h1>
+    <hr>
+</div>
+
+<div class="container">
+  </div>
+<form class="well" (ngSubmit)="transferMoney()">
+    <div class="container">
+        <div class="row">
+          <div class="form-group col-md-6">
+            De : 
+              <select class="form-control" [(ngModel)]="client_debiteur" name="client_debiteur" required>
+                  <option *ngFor="let client_debiteur of clients" [ngValue]="client_debiteur"  >{{client_debiteur.nom + ' ' + client_debiteur.prenom }}</option>
+              </select>
+            A :
+              <select class="form-control" [(ngModel)]="client_crediteur" name="client_crediteur"  required>
+                  <option *ngFor="let client_crediteur of clients" [ngValue]="client_crediteur" >{{client_crediteur.nom + ' ' + client_crediteur.prenom }}</option>
+              </select>
+            Montant :  
+            <input type="text" [(ngModel)]="montant" name="montant" class="form-control" placeholder="Montant" required>
+            Libelle :
+            <input type="text" [(ngModel)]="libelle" name="libelle" class="form-control" placeholder="Libelle">
+            Type :
+            <select class="form-control" [(ngModel)]="type_mouvement" name="type_mouvement"  required>
+                <option value="ponctuel" selected="selected"> Ponctuel  </option>
+                <option value="permanent">                    Permanent </option>
+                <option value="différé">                      Différé   </option>
+            </select>
+            <br/>
+            <button type="submit" class="btn btn-success" >Envoi</button>
+            <input class="btn btn-primary" type="reset" value="Reset">
+            
+          </div>
+        </div>
+      </div>  
+</form>

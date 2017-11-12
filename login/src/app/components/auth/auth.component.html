@@ -1,0 +1,6 @@
+
+<div id="contains">
+  <h4 *ngIf="!loginService.isAuthenticated()">
+    <button type="button" class="btn btn-success"  (click)="loginService.login()" >Login</button>
+  </h4>
+</div>

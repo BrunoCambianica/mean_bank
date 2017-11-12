@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>Virements effectués</h1>
+  <hr>
+</div>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+      <table class="table table-condensed table-striped table-hover table-perso ">
+        <thead>
+          <tr>
+            <th>De </th>
+            <th>Pour</th>
+            <th>Montant</th>
+            <th>Libelle</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let mouvement of mouvements">
+            <td [textContent]="mouvement.nom_debiteur + ' ' +  mouvement.prenom_debiteur"></td>
+            <td [textContent]="mouvement.nom_crediteur + ' ' +  mouvement.prenom_crediteur"></td>
+            <td [textContent]="mouvement.montant + ' €'"></td>
+            <td [textContent]="mouvement.libelle"></td>
+            <td [textContent]="mouvement.type_mouvement"></td>
+            <td [textContent]="mouvement.date | date: 'short'"></td>
+            <td><input type="button" (click)="deleteTransfert(mouvement._id)" value="RIP" class="btn btn-danger"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

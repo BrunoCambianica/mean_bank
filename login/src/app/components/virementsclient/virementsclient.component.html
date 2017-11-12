@@ -1,0 +1,60 @@
+<div class="container">
+  <hr>
+  <h2>Modifier informations :</h2>
+  <hr>
+</div>
+
+<form class="well" >
+  <div class="container">
+      <div class="form-group col-md-6" *ngIf="client$ | async as client">
+        Nom:
+          <input type="text" value="{{ client.nom }}" [(ngModel)]="nom" name="nom" class="form-control"  placeholder="{{ client.nom }}" required>
+        Prenom 
+          <input type="text" [(ngModel)]="prenom" name="prenom" class="form-control" value="{{ client.prenom }}" placeholder="{{ client.prenom }}" required>
+        Identifiant
+          <input type="text" [(ngModel)]="username" name="username" class="form-control" value="{{ client.username }}" placeholder="{{ client.username }}" required>
+        Mot de passe
+          <input type="password" [(ngModel)]="password" name="password" class="form-control" value="{{ client.password }}" placeholder="{{ client.password }}" required>
+        <br/>
+          <button type="submit" (click)="modifyClient(client)" class="btn btn-success" >Envoi</button> 
+          <input class="btn btn-primary" type="reset" value="Annuler">
+          <button class="btn" (click)="goToClients()">Retour</button>
+      </div>
+  </div> 
+</form>
+
+<div class="container">
+    <hr>
+    <h2>Historique de vos transferts :</h2>
+    <hr>
+</div>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <table class="table table-condensed table-striped table-hover table-perso ">
+      <thead>
+        <tr>
+          <th>Debiteur </th>
+          <th>Crediteur</th>
+          <th>Montant</th>
+          <th>Libelle</th>
+          <th>Type</th>
+          <th>Date</th>
+          <th>FIN</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let mouvement of mouvements">
+          <td [textContent]="mouvement.nom_debiteur + ' ' +  mouvement.prenom_debiteur"></td>
+          <td [textContent]="mouvement.nom_crediteur + ' ' +  mouvement.prenom_crediteur"></td>
+          <td [textContent]="mouvement.montant + ' €'"></td>
+          <td [textContent]="mouvement.libelle"></td>
+          <td [textContent]="mouvement.type_mouvement"></td>
+          <td [textContent]="mouvement.date | date: 'short'"></td>
+          <td><input type="button" (click)="deleteTransfert(mouvement._id)" value="Supprimer" class="btn btn-danger"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
